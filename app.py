@@ -12,7 +12,13 @@ def index():
 def _zip(a, b):
     return zip(a, b)
 
-
+@app.route('/analytics', methods=['POST'])
+def analytics():
+    no_of_units =request.form['amount'] 
+    no_of_units=int(no_of_units)
+    sel_state = request.form['state']
+    print(no_of_units)
+    print(sel_state)
 
 @app.route('/feature1')
 def feature1():
