@@ -37,7 +37,27 @@ def analytics():
     """, (sel_state,))
     
     slab_data = cursor.fetchall()
-    print(slab_data)
+    # Perform the calculation in Python
+    total_cost = 0
+    each_unit=[]
+    each_amt=[]
+    for low, high, rate in slab_data:
+        if no_of_units >= low and no_of_units <= high:
+            slab_units = no_of_units-low + 1
+            amt=slab_units * rate
+            total_cost += amt
+            each_unit.append(slab_units)
+            each_amt.append(amt)
+        elif no_of_units >= low and no_of_units > high:
+            slab_units = high-low + 1
+            amt=slab_units * rate
+            total_cost += amt
+            each_unit.append(slab_units)
+            each_amt.append(amt)
+
+
+    return render_template('feature2.html', cost=total_cost,each_amt=each_amt,each_unit=each_unit)
+
 @app.route('/feature1')
 def feature1():
     return render_template('feature1.html')
