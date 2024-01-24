@@ -8,6 +8,12 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.template_filter('zip')
+def _zip(a, b):
+    return zip(a, b)
+
+
+
 @app.route('/feature1')
 def feature1():
     return render_template('feature1.html')
