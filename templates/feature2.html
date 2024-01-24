@@ -83,3 +83,45 @@
         <button type="submit">Calculate</button>
     </div>
     </form>
+    <body>
+        <h1>Total Cost: {{ cost }}</h1>
+        <div id="chart_div"></div>
+    
+        <script type="text/javascript">
+            google.charts.load('current', {'packages':['bar']});
+            google.charts.setOnLoadCallback(drawChart);
+    
+            function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Slab');
+                data.addColumn('number', 'Units');
+                data.addColumn('number', 'Amount');
+    
+                {% for unit, amt in each_unit|zip(each_amt) %}
+                    data.addRow(['Slab {{ loop.index }}', {{ unit }}, {{ amt }}]);
+                {% endfor %}
+    
+                var options = {
+                    chart: {
+                        title: 'Electricity Bill Analysis',
+                        subtitle: 'Units and Amount for each slab',
+                    },
+                    bars: 'vertical',
+                    vAxis: {format: 'decimal'},
+                    height: 400,
+                    colors: ['#1b9e77', '#d95f02']
+                };
+    
+                var chart = new google.charts.Bar(document.getElementById('chart_div'));
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+            }
+        </script>
+    
+    
+    </body>
+    <script>
+    
+    </script>
+    
+    </html>
+    
