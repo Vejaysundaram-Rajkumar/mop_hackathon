@@ -22,3 +22,16 @@ def get_weather_data(area):
         return weather_data
     else:
         return None
+def print_weather_info(weather_data):
+    if weather_data:
+        wind_speed = weather_data['wind']['speed']
+        temperature = weather_data['main']['temp']
+        sun_ray_intensity = weather_data['main']['feels_like']  # or any other relevant parameter
+
+        # Constants
+        solar_panel_efficiency = 0.50  
+        solar_panel_area = 5000  # Example solar panel area in square meters
+        wind_turbine_efficiency = 0.35  # Example wind turbine efficiency (35%)
+        air_density = 1.225  
+
+        time = 8760 # Time in hours
