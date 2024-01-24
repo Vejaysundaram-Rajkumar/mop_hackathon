@@ -56,7 +56,7 @@ def analytics():
             each_amt.append(amt)
 
 
-    return render_template('feature2.html', cost=total_cost,each_amt=each_amt,each_unit=each_unit)
+    return render_template('feature2.html',state=sel_state,no=no_of_units, cost=total_cost,each_amt=each_amt,each_unit=each_unit)
 
 @app.route('/feature1')
 def feature1():
