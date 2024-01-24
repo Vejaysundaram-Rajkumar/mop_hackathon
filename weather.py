@@ -33,3 +33,23 @@ def print_weather_info(weather_data):
         air_density = 1.225  
 
         time = 8760 
+           
+        solar_energy = sun_ray_intensity * solar_panel_efficiency * solar_panel_area * time
+
+     
+        wind_energy = 0.5 * air_density * wind_speed**3 * wind_turbine_efficiency * time
+
+       
+        total_energy = solar_energy + wind_energy
+
+       
+        system_efficiency = 0.90  
+        electricity_generation = total_energy * system_efficiency
+
+        return electricity_generation
+
+
+    else:
+        print("Failed to fetch weather data")
+
+
