@@ -27,8 +27,8 @@ def print_weather_info(weather_data):
         wind_speed = weather_data['wind']['speed']
         temperature = weather_data['main']['temp']
         sun_ray_intensity = weather_data['main']['feels_like'] 
-        solar_panel_efficiency = 0.50  
-        solar_panel_area = 5000  
+        solar_panel_efficiency = 0.18  
+        solar_panel_area = 500  
         wind_turbine_efficiency = 0.35  
         air_density = 1.225  
 
@@ -53,3 +53,7 @@ def print_weather_info(weather_data):
         print("Failed to fetch weather data")
 
 
+d=get_weather_data("Tamilnadu")
+
+result=print_weather_info(d)
+print(result)
