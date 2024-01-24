@@ -8,6 +8,13 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+#Connect with the database to get the slab rates for respective state
+def connect_db():
+    connection = sqlite3.connect('test.db')
+    return connection
+
+
+
 @app.template_filter('zip')
 def _zip(a, b):
     return zip(a, b)
@@ -19,7 +26,18 @@ def analytics():
     sel_state = request.form['state']
     print(no_of_units)
     print(sel_state)
+    con = connect_db()
+    cursor = con.cursor()
 
+    # Fetch slab data for the selected state
+    cursor.execute("""
+        SELECT Low, High, Rate
+        FROM data
+        WHERE State = ?
+    """, (sel_state,))
+    
+    slab_data = cursor.fetchall()
+    print(slab_data)
 @app.route('/feature1')
 def feature1():
     return render_template('feature1.html')
