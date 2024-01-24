@@ -45,15 +45,9 @@ def print_weather_info(weather_data):
        
         system_efficiency = 0.90  
         electricity_generation = total_energy * system_efficiency
-
-        return electricity_generation
+        energylist=[solar_energy,wind_energy,total_energy,electricity_generation]
+        return energylist
 
 
     else:
         print("Failed to fetch weather data")
-
-
-d=get_weather_data("Tamilnadu")
-
-result=print_weather_info(d)
-print(result)

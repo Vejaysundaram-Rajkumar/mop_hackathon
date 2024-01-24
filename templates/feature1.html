@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,10 +15,22 @@
             align-items: center;
             height: 100vh;
             background-color: #f4f4f4;
+            flex-direction: column;
         }
 
         .container {
             text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 20px;
         }
 
         form {
@@ -25,6 +38,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
         label {
@@ -33,7 +47,7 @@
             margin-bottom: 10px;
         }
 
-        input {
+        select {
             padding: 10px;
             font-size: 16px;
             width: 100%;
@@ -52,12 +66,13 @@
         }
     </style>
 </head>
-    <body>
-        <div class="container">
-            <form action="/process" method="post">
-                <label for="area_region">Enter Area/Region:</label>
-                <select id="area_region"  name="area_region" required>
-                    <option value="" disabled selected>Select State</option>
+
+<body>
+    <div class="container">
+        <form action="/process" method="post" class="card">
+            <label for="area_region">Enter Area/Region:</label>
+            <select id="area_region" name="area_region" required>
+                <option value="" disabled selected>Select State</option>
                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
                    <option value="Assam">Assam </option>
@@ -86,11 +101,25 @@
                     <option value="Uttar Pradesh">Uttar Pradesh </option>
                     <option value="Uttarakhand">Uttarakhand </option>
                     <option value="West Bengal">West Bengal </option>
-                </select>
-                <button type="submit">Submit</button>
-                {{weather_data}}
-            </form>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+        <div class="card">
+            
+            <h3>REAL TIME ELECTRICITY THAT CAN BE GENERATED :</h3>
+            <br>
+            <h3>LIVE PARAMETER VALUES:</h3>
+            <h4><strong>Solar Energy:</strong></h4>{{solar_energy}} W/m2
+            <h4><strong>Wind Energy:</strong></h4>{{wind_energy}} Kwh
+            <h4><strong>Total Energy:</strong></h4>{{ total_energy }} J
+            <h3>The Estimated Electricity that can be generated is:</h3>
+            {{weather_data}}
+           
         </div>
-    </body>
-    </html>
+</body>
+
+</html>
+
     

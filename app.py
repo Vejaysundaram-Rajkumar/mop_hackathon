@@ -72,8 +72,9 @@ def process():
     area_region = request.form['area_region']
     weather_data=weather.get_weather_data(area_region)
     estimated_electricity=weather.print_weather_info(weather_data)
-    elec=str(estimated_electricity) + " kWh"
-    return render_template('feature1.html', weather_data=elec)
+    elec=str(estimated_electricity[3]) + " kWh"
+
+    return render_template('feature1.html', weather_data=elec,area=area_region,solar_energy=estimated_electricity[0],wind_energy=estimated_electricity[1],total_energy=estimated_electricity[2])
 
 if __name__ == '__main__':
     app.run(debug=True)
